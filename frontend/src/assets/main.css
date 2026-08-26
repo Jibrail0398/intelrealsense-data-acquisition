@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans:
+    "Geist", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono:
+    "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    monospace;
+
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  --color-danger: #dc2626;
+  --color-danger-hover: #b91c1c;
+  --color-warn: #b45309;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+body {
+  @apply bg-zinc-100 text-zinc-900 font-sans antialiased;
+}
+
+::selection {
+  @apply bg-blue-600/20;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+.skeleton {
+  @apply rounded-md bg-zinc-200 relative overflow-hidden;
+}
+.skeleton::after {
+  content: "";
+  @apply absolute inset-0;
+  animation: shimmer 1.6s infinite linear;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.55),
+    transparent
+  );
+  background-size: 400px 100%;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(0.82);
+  }
+}
+.pulse-dot {
+  animation: pulse-dot 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.toast-enter-active {
+  animation: toast-in 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.toast-leave-active {
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease;
+}
+.toast-leave-to {
+  opacity: 0;
+  transform: translateY(4px);
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-10%);
+  }
+  100% {
+    transform: translateY(110%);
+  }
+}
+.scanline::after {
+  content: "";
+  @apply absolute inset-x-0 h-10 bg-gradient-to-b from-transparent via-white/12 to-transparent;
+  animation: scanline 3.2s linear infinite;
+}
