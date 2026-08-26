@@ -41,5 +41,6 @@ __screenshots__/
 test-results/
 playwright-report/
 
-PRD.md
+backend/PRD-backend.md
 design.md
+frontend/PRD-Frontend.md
