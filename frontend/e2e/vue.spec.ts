@@ -1,8 +1,9 @@
-import { test, expect } from '@playwright/test'
+import { expect, test } from '@playwright/test'
 
-// See here how to get started:
-// https://playwright.dev/docs/intro
-test('visits the app root url', async ({ page }) => {
+// Needs the backend running (CAMERA_BACKEND=mock is enough).
+test('opens on the capture screen with the sidebar', async ({ page }) => {
   await page.goto('/')
-  await expect(page.locator('h1')).toHaveText('You did it!')
+  await expect(page).toHaveURL(/\/capture$/)
+  await expect(page.getByRole('navigation', { name: 'Main' })).toContainText('History')
+  await expect(page.locator('h1')).toBeVisible()
 })

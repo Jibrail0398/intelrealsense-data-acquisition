@@ -47,3 +47,13 @@ frontend/PRD-Frontend.md
 
 prompt.md
 realsense_backend_endpoints.md
+# tasteskill working files (screenshots, direction sheet)
+.taste-skill/
+
+# Python
+__pycache__/
+*.pyc
+.agents
+.claude
+.taste-skill
+.vscode

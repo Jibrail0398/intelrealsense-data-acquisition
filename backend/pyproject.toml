@@ -1,0 +1,29 @@
+[project]
+name = "realsense-dataset-collector-backend"
+version = "1.0.0"
+description = "FastAPI backend for capturing RGB-D datasets with Intel RealSense cameras"
+requires-python = ">=3.10,<3.15"
+dependencies = [
+    "fastapi[standard]>=0.115",
+    "sqlalchemy>=2.0",
+    "pydantic>=2.7",
+    "pydantic-settings>=2.3",
+    "pyrealsense2>=2.55",
+    "numpy>=1.26",
+    "opencv-python-headless>=4.9",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "httpx>=0.27", "ruff>=0.6"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["B008"]  # FastAPI declares Query()/Depends() in defaults
