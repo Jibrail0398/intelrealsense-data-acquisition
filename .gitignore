@@ -44,3 +44,6 @@ playwright-report/
 backend/PRD-backend.md
 design.md
 frontend/PRD-Frontend.md
+
+prompt.md
+realsense_backend_endpoints.md
